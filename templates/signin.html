@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <title>
+            Login | User
+        </title>
+        <style>
+            .errorlist{
+                color: red;
+            }
+            .completed{
+                background-color : rgba(7, 243, 7, 0.356) !important;
+            }
+            .expired{
+                background-color : rgba(255, 0, 0, 0.507) !important;
+            }
+            .successfulMsg{
+                color : blue;
+                font-size: 1.5rem;
+            }
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-dark bg-dark">
+            <div class="col-md-10">
+                <a class="navbar-brand" href="">Login Page</a>
+            </div>
+        </nav>
+        <br>
+        {% if messages %}
+            {% for message in messages %}
+                <p class="successfulMsg">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <p style="margin:10px 10px auto">Username</p>
+            <input type="text" name="username" id="Username" placeholder="Enter Username" required style="margin:10px 10px auto">
+            <p style="margin:10px 10px auto">Password</p>
+            <input type="password" name="password" id="Password" placeholder="Enter Password" required style="margin:10px 10px auto"><br>
+            <button class="btn btn-primary" style="margin: 10px 10px auto;">Login</button>
+            <p>
+                <span style="padding: 0 0.5%">
+                    <a href="#">Forgot Password</a>
+                </span>
+                <span style="padding: 0 0.5%">
+                    <a href="{% url 'user:register' %}">Register</a>
+                </span>
+            </p>
+        </form>
+    </body>
+</html>

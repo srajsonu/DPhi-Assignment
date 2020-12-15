@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <title>
+            Register User
+        </title>
+        <style>
+            .errorlist{
+                color: red;
+            }
+            .completed{
+                background-color : rgba(7, 243, 7, 0.356) !important;
+            }
+            .expired{
+                background-color : rgba(255, 0, 0, 0.507) !important;
+            }
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-dark bg-dark">
+            <div class="col-md-10">
+                <a class="navbar-brand" href="">Register here</a>
+            </div>
+        </nav>
+        <br>
+        <form action="" method="post">
+
+            {% csrf_token %}
+            <fieldset class="form-group">
+                {{ user_form.as_p }}
+            </fieldset>
+
+            <button type="reset" class="btn btn-secondary" required style="margin:10px 10px auto">Reset</button>
+
+            <button type="submit" class="btn btn-primary" required style="margin:10px 10px auto">Register</button>
+        </form>
+    </body>
+</html>
