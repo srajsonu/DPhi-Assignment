@@ -24,10 +24,10 @@
     <body>
         <nav class="navbar navbar-dark bg-dark">
             <div class="col-md-10">
-                <a class="navbar-brand" href="{% url 'checkout:checkout' %}">Checkout</a>
+                <a class="navbar-brand" href="{% url 'user:dashboard' %}">Dashboard</a>
             </div>
             <div class="col-md-1">
-                <a href="{% url 'user:user_logout' %}">Logout</a>
+                <a href="{% url 'user:logout' %}">Logout</a>
             </div>
         </nav>
         {% block content %}
