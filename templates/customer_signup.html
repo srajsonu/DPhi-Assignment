@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %} Customer SignUp {% endblock %}
+{% block header %} Customer SignUp {% endblock %}
+{% block content %}
+    <div class="container" style="margin: 10px 10px auto;">
+    <form class="card" method="POST" action="{% url 'user:signup' 1 %}"  style="padding:25px;">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input class="btn btn-primary" type="submit" value="SignUp" style="margin: 10px 10px 10px;">
+    </form>
+    </div>
+{% endblock %}

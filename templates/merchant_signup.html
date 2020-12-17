@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %} Merchant SignUp {% endblock %}
+{% block header %} Merchant SignUp {% endblock %}
+{% block content %}
+
+    <div class="container" style="margin: 10px 10px auto;">
+        <form class="card" method="POST" action="{% url 'user:signup' 2 %}" style="padding:25px;">
+            {% csrf_token %}
+            {{form.as_p}}
+            <div class="input-field col s12">
+                <label for="nursery">Nursery:</label>
+                <input name="nursery" id="nursery" type="text" class="validate" required>
+            </div>
+            <!-- <input type="text" name="nursery" value="" placeholder="Nursery" /> -->
+            <input class="btn btn-primary" type="submit" value="SignUp" style="margin: 10px 10px 10px;">
+        </form>
+    </div>
+{% endblock %}

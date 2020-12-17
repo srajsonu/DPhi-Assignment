@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}SignUp Type{% endblock %}
+{% block header %}Select your role{% endblock %}
+{% block content %}
+    <div class="center card-action">
+      <a class="btn btn-primary" href="{% url 'user:signup_type' 1 %}" style="margin: 10px 10px auto;">SignUp as Customer</a>
+    </div>
+
+    <div class="center card-action">
+      <a class="btn btn-primary" href="{% url 'user:signup_type' 2 %}" style="margin: 10px 10px auto;">SignUp as Merchant</a>
+    </div>
+
+{% endblock %}

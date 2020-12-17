@@ -1,11 +1,16 @@
 from django.contrib import admin
-from django.urls import path
-from .views import *
+from django.urls import path, include
+
+from . import views
 
 app_name = 'user'
 urlpatterns = [
-    path('signin/', signin, name='signin'),
-    path('signup/', signup, name='signup'),
-    path('', dashboard, name='dashboard'),
-    path('logout/', logout, name='logout')
+    path('', views.signin, name='signin'),
+
+    path('index/', views.index, name='index'),
+    path('signup/<int:user>/', views.signup_type, name='signup_type'),
+    path('signup/post/<int:user>/', views.signup, name='signup'),
+
+    path('dashboard/', views.dashboard, name='dashboard'),
+    path('logout/', views.signout, name='logout')
 ]

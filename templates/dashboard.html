@@ -1,1 +1,12 @@
+{% extends 'base.html' %}
+{% block title %} Dashboard {% endblock %}
 
+{% block header %}
+    Dashboard
+{% endblock %}
+
+{% block logout %}
+    <div class="col-md-1">
+        <a href="{% url 'user:logout' %}">Logout</a>
+    </div>
+{% endblock %}

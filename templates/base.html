@@ -20,16 +20,15 @@
             }
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    </head>
-    <body>
+
         <nav class="navbar navbar-dark bg-dark">
             <div class="col-md-10">
-                <a class="navbar-brand" href="{% url 'user:dashboard' %}">Dashboard</a>
+                <a class="navbar-brand" href="{% url 'user:dashboard' %}">{% block header %} {% endblock %}</a>
             </div>
-            <div class="col-md-1">
-                <a href="{% url 'user:logout' %}">Logout</a>
-            </div>
+            {% block logout %} {% endblock %}
         </nav>
+    </head>
+    <body>
         {% block content %}
         {% endblock %}
     </body>
