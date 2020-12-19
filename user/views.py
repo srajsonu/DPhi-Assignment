@@ -20,6 +20,7 @@ def home(request):
     else:
         return redirect('user:dashboard')
 
+
 def signin(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -105,6 +106,7 @@ def signup(request, user):
 
     return render(request, 'user/signup.html', {'user_form': user_form, 'registered': registered})
 
+
 @login_required
 def dashboard(request):
     print(request.user, request.user.is_staff)
@@ -150,12 +152,12 @@ def addplant(request):
             p = plant.save(commit=False)
             p.manager = request.user
             plant.save()
-            return HttpResponseRedirect(reverse("nurseryapp:dashboard"))
+            return HttpResponseRedirect(reverse("user:dashboard"))
     else:
-        return HttpResponse("Waait a min, Who Are You ?")
+        return HttpResponse("You are not a merchant")
 
 
-@login_required(login_url='nurseryapp:login_page')
+@login_required(login_url='user:login')
 def cart_action(request, p_id, action):
     user = request.user
     product = Plants.objects.get(id=p_id)
