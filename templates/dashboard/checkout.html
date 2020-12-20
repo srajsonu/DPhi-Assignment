@@ -10,7 +10,7 @@
         <div class="card-content">
           <div>
           
-          <a class="btn " style="display: inline-block; margin-top: 10px;" href="{% url 'user:cart' %}">Back To Cart</a><br><br>
+          <a class="btn btn-primary " style="display: inline-block; margin-top: 10px;" href="{% url 'user:cart' %}">Back To Cart</a><br><br>
           </div>
           <div class="row">
             <div class="col l8 m12 s12">
@@ -21,27 +21,31 @@
                       <h5 class="left-align" style="display: inline-block;">Enter Address</h5> 
                     <div class="row">                     
                       <div class="input-field col s6">
-                        <input id="address" type="text" class="validate" name="address" required>
-                        <label for="address">Address</label>
+                          <label for="address">Address</label><br>
+                        <input id="address" type="text" class="validate" name="address" required placeholder="Enter your address">
+
                       </div>                  
                       <div class="input-field col s6">
-                        <input id="city" type="text" class="validate" name="city" required>
-                        <label for="city">City</label>
+                          <label for="city">City</label><br>
+                        <input id="city" type="text" class="validate" name="city" required placeholder="Enter your city">
+
                       </div>
                     </div>  
                     <div class="row">
                       <div class="input-field col s6">
-                        <input id="state" type="text" class="validate" name="state" required>
-                        <label for="state">State</label>
+                          <label for="state">State</label><br>
+                        <input id="state" type="text" class="validate" name="state" required placeholder="Enter your state">
+
                       </div>                  
                       <div class="input-field col s6">
-                        <input id="pincode" type="number" class="validate" name="pincode" required>
-                        <label for="pincode">PinCode</label>
+                          <label for="pincode">PinCode</label><br>
+                        <input id="pincode" type="number" class="validate" name="pincode" required placeholder="Enter valid pincode">
+
                       </div>
                       </div>
                     </div>  
 
-                    <input class="btn" type="submit" value="Proceed for payment"> 
+                    <input class="btn btn-primary" type="submit" value="Proceed for payment" style="margin-top: 50px">
                     
                   </form>                                
                 </div>
@@ -49,7 +53,7 @@
            
             <div class="col l4 m12 s12" id="order-summary">
               
-              <h5>Order Summary</h5><hr><br>
+                <h5><b>Order Summary</b></h5><hr><br>
               {% for item in items %}
               <div class="row">
                 <div class="col l3 m3 s3">

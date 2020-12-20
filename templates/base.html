@@ -26,6 +26,11 @@
                 <a class="navbar-brand" href="{% url 'user:dashboard' %}">{% block header %} {% endblock %}</a>
             </div>
             {% block logout %} {% endblock %}
+
+            <div class="col-md-1">
+                <a href="{% url 'user:logout' %}">Logout</a>
+            </div>
+
         </nav>
     </head>
     <body>

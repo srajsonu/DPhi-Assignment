@@ -2,13 +2,7 @@
 {% block title %} Dashboard {% endblock %}
 
 {% block header %}
-    Dashboard
-{% endblock %}
-
-{% block logout %}
-    <div class="col-md-1">
-        <a href="{% url 'user:logout' %}">Logout</a>
-    </div>
+    Customer Dashboard
 {% endblock %}
 
 {% block content %}
@@ -19,15 +13,15 @@
             <div class="card-image">
 
               <span class="card-title white-text"><b>{{ plant.name|title }}</b></span><br>
-                <img src="{{ plant.image.url }}" style="height: 300px;"><br>
-              <a class="btn btn-primary" href="{% url 'user:cart_action' plant.id 1 %}"><b class="material-icons" style="margin:10px 10px auto">Add to cart</b></a>
-            </div>
-            <div class="card-content">
+                <img src="{{ plant.image.url }}" style="height: 150px;width: 150px"><br>
+                <div class="card-content">
               <left>
-                <p><b>{{ plant.description }}</b></p>
+                <p><b>Desc: </b>{{ plant.description }}</p>
 {#                <p>By {{ plant.manager.nursery }}</p>#}
                 <p>Rs. {{ plant.price }}</p>
               </left>
+            </div>
+              <a class="btn btn-primary" href="{% url 'user:cart_action' plant.id 1 %}"><b>Add to cart</b></a>
             </div>
           </div>
         </div>

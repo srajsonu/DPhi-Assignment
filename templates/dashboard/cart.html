@@ -15,7 +15,7 @@
               Total: Rs. {{ order.get_cart_total|floatformat:2}}
             </div>
             <div class="col l4 m4 s12">
-              <a href="{% url 'user:checkout' %}" class="waves-effect waves-light btn right">Checkout</a>
+              <a href="{% url 'user:checkout' %}" class="btn btn-primary">Checkout</a>
             </div>
           </div>
         </div>
@@ -44,7 +44,7 @@
             Quantity:<br>
             <a class="btn btn-small btn-flat" href="{% url 'user:cart_action' item.product.id 0 %}"><i class="material-icons">remove</i></a>
               {{ item.quantity }}
-            <a class="btn btn-small btn-flat" href="{% url 'user:cart_action' item.product.id 1 %}"><i class="material-icons">add</i></a>
+            <a class="btn btn-secondary" href="{% url 'user:cart_action' item.product.id 1 %}">add</a>
           </div>
           <div class="col l3 m3 s3">
            Price:<br>Rs. {{ item.get_total }}
