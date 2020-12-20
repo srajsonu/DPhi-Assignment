@@ -10,12 +10,12 @@
         <div class="card-content">
           <div>
           
-          <a class="btn " style="display: inline-block; margin-top: 10px;" href="{% url 'nurseryapp:cart' %}">Back To Cart</a><br><br>
+          <a class="btn " style="display: inline-block; margin-top: 10px;" href="{% url 'user:cart' %}">Back To Cart</a><br><br>
           </div>
           <div class="row">
             <div class="col l8 m12 s12">
                 <div class="row">                 
-                  <form class="col s12" id="form" method="POST" action="{% url 'nurseryapp:process_order' %}">
+                  <form class="col s12" id="form" method="POST" action="{% url 'user:process_order' %}">
                     {% csrf_token %}
                     <div id="shipping-info">
                       <h5 class="left-align" style="display: inline-block;">Enter Address</h5> 
@@ -79,7 +79,7 @@
 
 {% else %}
 
-<h2>Oops! there's nothing in the cart</h2>
+<h2>There's nothing in the cart</h2>
 
 {% endif %}
 

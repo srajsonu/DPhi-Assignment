@@ -17,14 +17,15 @@
         <div class="center col s12 m12 l4" style="margin-top: 50px;">
           <div class="card">
             <div class="card-image">
-              <img src="{{ plant.image.url }}" style="height: 300px;">
-              <span class="card-title white-text">{{ plant.name|title }}</span>
-              <a class="btn-floating halfway-fab waves-effect waves-light green darken-4" href="{% url 'nurseryapp:cart_action' plant.id 1 %}"><i class="material-icons">add_shopping_cart</i></a>
+
+              <span class="card-title white-text"><b>{{ plant.name|title }}</b></span><br>
+                <img src="{{ plant.image.url }}" style="height: 300px;"><br>
+              <a class="btn btn-primary" href="{% url 'user:cart_action' plant.id 1 %}"><b class="material-icons" style="margin:10px 10px auto">Add to cart</b></a>
             </div>
             <div class="card-content">
               <left>
-                <p>{{ plant.description }}</p>
-                <p>By {{ plant.manager.nursery }}</p>
+                <p><b>{{ plant.description }}</b></p>
+{#                <p>By {{ plant.manager.nursery }}</p>#}
                 <p>Rs. {{ plant.price }}</p>
               </left>
             </div>

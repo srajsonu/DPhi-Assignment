@@ -1,6 +1,6 @@
 import datetime
 
-from django.contrib.auth import logout, authenticate, login
+from django.contrib.auth import logout, authenticate, login, get_user_model
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
@@ -12,15 +12,6 @@ from .forms import UserForm, PlantsForm
 from .models import Plants, OrderItem, Order, ShippingAddress
 
 
-@login_required
-def home(request):
-    if not request.user.is_staff:
-        plants = Plants.objects.all()
-        return render(request, 'dashboard/customer_dashboard.html', {'plants': plants})
-    else:
-        return redirect('user:dashboard')
-
-
 def signin(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -28,17 +19,44 @@ def signin(request):
 
         user = authenticate(username=username, password=password)
         message = 'User is ' + str(user)
-        if user:
-            if user.is_active:
-                login(request, user)
-                return redirect('user:dashboard')
+
+        if user.is_active:
+            login(request, user)
+            if not user.is_staff:
+                plants = Plants.objects.all()
+                return render(request, 'dashboard/dashboard.html', {'plants': plants})
             else:
-                return HttpResponse('Your account is not active')
+                return redirect('user:dashboard')
         else:
-            return render(request, 'user/signin.html', {'message': message})
+            return HttpResponse('Your account is not active')
+
 
     return render(request, 'user/signin.html')
 
+# def SignIn(request):
+#     if not request.user.is_authenticated:
+#         if request.method == 'POST':
+#             username = request.POST['username']
+#             password = request.POST['password']
+#             user_model = get_user_model()
+#             print(user_model)
+#             print(password)
+#         try:
+#             user = user_model.objects.get(username=username)
+#             print(user)
+#             if user.check_password(password):
+#                 login(request, user)
+#                 if user.is_staff:
+#                     return HttpResponseRedirect(reverse("user:dashboard"))
+#                 else:
+#                     return HttpResponseRedirect(reverse("user:home"))
+#             else:
+#                 return HttpResponse("Invalid password")
+#         except user_model.DoesNotExist:
+#             return HttpResponse("Invalid email")
+#
+#     else:
+#         return HttpResponse("You're already logged in")
 
 def index(request):
     return render(request, 'user/signup_index.html')
@@ -157,7 +175,7 @@ def addplant(request):
         return HttpResponse("You are not a merchant")
 
 
-@login_required(login_url='user:login')
+@login_required
 def cart_action(request, p_id, action):
     user = request.user
     product = Plants.objects.get(id=p_id)
@@ -192,7 +210,7 @@ def checkout(request):
     return render(request, 'dashboard/checkout.html', {'items': items, 'order': order})
 
 
-@login_required(login_url='user:login')
+@login_required
 def process_order(request):
     transaction_id = datetime.datetime.now().timestamp()
 
@@ -215,4 +233,4 @@ def process_order(request):
         pincode=request.POST['pincode'],
     )
 
-    return HttpResponseRedirect(reverse('user:dashboard'))
+    return redirect('user:dashboard')
