@@ -1,13 +1,10 @@
 import datetime
 
-from django.contrib.auth import logout, authenticate, login, get_user_model
+from django.contrib.auth import logout, authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
-
-# Create your views here.
 from django.urls import reverse
-
 from .forms import UserForm, PlantsForm
 from .models import Plants, OrderItem, Order, ShippingAddress
 
@@ -30,8 +27,8 @@ def signin(request):
         else:
             return HttpResponse('Your account is not active')
 
-
     return render(request, 'user/signin.html')
+
 
 # def SignIn(request):
 #     if not request.user.is_authenticated:
@@ -233,4 +230,4 @@ def process_order(request):
         pincode=request.POST['pincode'],
     )
 
-    return redirect('user:dashboard')
+    return HttpResponse('Order Successfully placed')

@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
-
+{% block header %} Cart {% endblock %}
 {% block content %}
 
 {% if order.get_cart_items is not 0 %}
-<div id='cart-card' class="container col s12 m12 l12">  
-    <div class="card horizontal">
+<div id='cart-card' class="container col s12 m12 l12">
+    <div class="card horizontal" style="margin-top: 20px">
       <div class="card-stacked">
         <div class="card-content">      
           <div class="row">
@@ -27,7 +27,7 @@
 {% endif %}
 
 {% for item in items %}
-<div id='cart-card' class="container col s12 m12 l12">
+<div id='cart-card' class="container col s12 m12 l12" style="margin-top: 20px">
   <div class="card horizontal">
     <div class="card-stacked">
       <div class="card-content">
@@ -42,9 +42,9 @@
           </div>
           <div class="col l3 m3 s3">
             Quantity:<br>
-            <a class="btn btn-small btn-flat" href="{% url 'user:cart_action' item.product.id 0 %}"><i class="material-icons">remove</i></a>
+            <a class="btn" href="{% url 'user:cart_action' item.product.id 0 %}" style="color: red">remove</a>
               {{ item.quantity }}
-            <a class="btn btn-secondary" href="{% url 'user:cart_action' item.product.id 1 %}">add</a>
+            <a class="btn btn-secondary" href="{% url 'user:cart_action' item.product.id 1 %}">+</a>
           </div>
           <div class="col l3 m3 s3">
            Price:<br>Rs. {{ item.get_total }}
